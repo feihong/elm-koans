@@ -55,6 +55,6 @@ testSuite =
         , test "compare returns an Order" <|
             -- valid Order values are LT, EQ, and GT
             \() ->
-                LT
-                    |> Expect.equal (compare 1 2)
+                [LT, GT, EQ]
+                    |> Expect.equal ([compare 1 2, compare 2 1, compare 3 3])
         ]
