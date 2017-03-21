@@ -14,54 +14,58 @@ oneTwoThree =
     Set.fromList [ 1, 2, 3 ]
 
 
+setOf4 = 
+    Set.fromList [1, 2, 3, 4]
+
+
 testSuite =
     describe "About Sets"
         [ test "a set can be created from a list" <|
             \() ->
-                xSet
+                oneTwoThree
                     |> assertEqualSets (Set.fromList [ 1, 2, 3 ])
         , test "a set cannot contain duplicates" <|
             \() ->
-                xSet
+                oneTwoThree
                     |> assertEqualSets (Set.fromList [ 1, 2, 3, 3, 2, 1 ])
         , test "sets may be empty" <|
             \() ->
-                xSet
+                Set.empty
                     |> assertEqualSets Set.empty
         , test "or contain a single value" <|
             \() ->
-                xSet
+                Set.singleton 0
                     |> assertEqualSets (Set.singleton 0)
         , test "insert may add a new element to a set" <|
             \() ->
-                xSet
+                setOf4
                     |> assertEqualSets (Set.insert 4 oneTwoThree)
         , test "but may not add duplicates" <|
             \() ->
-                xSet
+                oneTwoThree
                     |> assertEqualSets (Set.insert 1 oneTwoThree)
         , test "remove may subtract an element from a set" <|
             \() ->
-                xSet
+                Set.fromList [2, 3]
                     |> assertEqualSets (Set.remove 1 oneTwoThree)
         , test "but only if it is there" <|
             \() ->
-                xSet
+                oneTwoThree
                     |> assertEqualSets (Set.remove 4 oneTwoThree)
         , test "member can check if an element is in a set" <|
             \() ->
-                xBool
+                True
                     |> Expect.equal (Set.member 2 oneTwoThree)
         , test "union will add two sets" <|
             \() ->
-                xSet
+                setOf4
                     |> assertEqualSets (Set.union oneTwoThree (Set.fromList [ 3, 4 ]))
         , test "intersect will get the intersection" <|
             \() ->
-                xSet
+                Set.singleton 3
                     |> assertEqualSets (Set.intersect oneTwoThree (Set.fromList [ 3, 4 ]))
         , test "diff is the difference between the first and second sets" <|
             \() ->
-                xSet
+                Set.singleton 2
                     |> assertEqualSets (Set.diff oneTwoThree (Set.fromList [ 1, 3 ]))
         ]
