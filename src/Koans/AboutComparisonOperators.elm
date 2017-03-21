@@ -10,11 +10,11 @@ testSuite =
     describe "About Comparison Operators"
         [ test "== tests for equality" <|
             \() ->
-                (1 == 1)
+                (22 == 22)
                     |> Expect.true "Should be True"
         , test "/= tests for inequality" <|
             \() ->
-                (-1 /= 33)
+                (-33 /= 33)
                     |> Expect.true "Should be True"
         , test "< tests for less than" <|
             \() ->
@@ -30,11 +30,11 @@ testSuite =
                     |> Expect.true "Should be True"
         , test ">= tests for greater than or equal to" <|
             \() ->
-                (1 >= 1)
+                (1 >= 1 && 2 >= 1)
                     |> Expect.true "Should be True"
         , test "Floats are comparable" <|
             \() ->
-                (1.5 >= 1.44)
+                (1.5 >= 1.5 && 1.5 >= 1.44)
                     |> Expect.true "Should be True"
         , test "Strings are comparable" <|
             \() ->
