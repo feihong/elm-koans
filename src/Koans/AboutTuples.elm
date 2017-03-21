@@ -40,7 +40,10 @@ testSuite =
                             |> Expect.true "Should be True"
         , test "tuples may also be destructured by function arguments" <|
             \() ->
-                ( 1, 2 )
-                    |> (\( f, s ) -> ((f == 1) && (s == 2)))
-                    |> Expect.true "Should be True"
+                let func (a, b) =
+                    a == 1 && b == 2
+                in
+                    ( 1, 2 )
+                        |> func
+                        |> Expect.true "Should be True"
         ]
